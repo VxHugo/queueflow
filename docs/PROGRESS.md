@@ -4,11 +4,11 @@
 
 - Current day: 1
 - Current milestone: Foundation
-- Status: awaiting CI and merge
+- Status: completed
 - Completed on: 2026-08-22
 - Branch: day-01-foundation
-- Pull request: pending
-- CI: pending
+- Pull request: https://github.com/VxHugo/queueflow/pull/1
+- CI: passed
 
 ## Delivered
 
@@ -21,7 +21,7 @@
 ## Verification
 
 - `npm --prefix frontend run build` — passed locally.
-- Backend runtime checks require Python 3.12 or Docker; neither runtime is available in this workspace.
+- Backend CI (Ruff and pytest) — passed on GitHub Actions.
 - Compose startup requires Docker; Docker is not installed or available in this workspace.
 
 ## Next milestone
