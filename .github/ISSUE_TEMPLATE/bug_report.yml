@@ -1,0 +1,6 @@
+name: Bug report
+description: Report reproducible QueueFlow behaviour
+body:
+  - type: textarea
+    attributes: {label: What happened, description: Include steps and expected behaviour.}
+    validations: {required: true}

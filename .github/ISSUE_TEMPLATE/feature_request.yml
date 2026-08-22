@@ -1,0 +1,6 @@
+name: Feature request
+description: Propose an improvement to QueueFlow
+body:
+  - type: textarea
+    attributes: {label: Problem, description: Describe the operational need.}
+    validations: {required: true}
