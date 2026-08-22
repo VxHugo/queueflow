@@ -2,11 +2,11 @@
 
 ## Current status
 
-- Current day: 1
-- Current milestone: Foundation
-- Status: completed
-- Completed on: 2026-08-22
-- Branch: day-01-foundation
+- Current day: 2 of 4
+- Current milestone: Core platform and interface
+- Status: in progress
+- Started on: 2026-08-22
+- Branch: day-02-core-ui
 - Pull request: https://github.com/VxHugo/queueflow/pull/1
 - CI: passed
 
@@ -15,7 +15,7 @@
 - Monorepo, MIT license and contributor documentation.
 - FastAPI health endpoints with actual PostgreSQL and Redis readiness probes.
 - Docker Compose topology for the initial service set.
-- React/TypeScript/Tailwind dashboard shell.
+- React/TypeScript/Tailwind dashboard shell and operations information architecture.
 - Alembic baseline and initial GitHub Actions workflow.
 
 ## Verification
@@ -26,9 +26,9 @@
 
 ## Next milestone
 
-Day 2 — Domain and persistence, after the Day 1 pull request is merged.
+Finish Day 2 domain, persistence, idempotency and outbox work.
 
 ## Known limitations
 
-- Jobs, workers, dispatcher and scheduler intentionally belong to later milestones.
+- The operations dashboard uses labelled preview values until it is connected to the API in Day 4.
 - Compose could not be executed on this machine because the Docker executable is unavailable.

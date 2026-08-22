@@ -1,12 +1,10 @@
 # QueueFlow roadmap
 
-QueueFlow is developed in seven reviewable milestones. This repository is intentionally built one milestone per day.
+QueueFlow is delivered in four focused daily milestones. The original seven-day plan was consolidated by moving the dashboard foundation into Day 2 and grouping tightly coupled capabilities without reducing the required product scope.
 
-1. **Foundation** — monorepo, runnable local infrastructure, health checks, initial dashboard shell and CI.
-2. **Domain and persistence** — job state machine, database schema, repositories and idempotency.
-3. **Queue and workers** — Redis Streams transport, dispatcher, heartbeats, leases and handlers.
-4. **Reliability** — scheduling, retries, cancellation, dead-letter queue and recovery.
-5. **API and observability** — complete REST API, real-time events, metrics and integration tests.
-6. **Dashboard** — live operational views connected to the API.
-7. **Demo and polish** — load testing, end-to-end demo, documentation and release validation.
+1. **Foundation** — monorepo, runnable local infrastructure, health checks, initial dashboard shell and CI. Completed.
+2. **Core platform and interface** — job domain, persistence, state machine, idempotency, outbox, dashboard information architecture and operations UI. In progress.
+3. **Processing and reliability** — Redis Streams, dispatcher, three workers, handlers, priority scheduling, retries, cancellation, dead-letter queue, scheduling and recovery.
+4. **Integration and demo** — complete REST API, WebSocket events, Prometheus, live dashboard integration, end-to-end tests, load test, demo assets and release validation.
 
+Each milestone must still pass its related tests and CI before merge. The four-day cadence changes sequencing, not the expectation that the final dashboard is connected to real backend data.
