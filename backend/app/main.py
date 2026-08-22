@@ -2,8 +2,8 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request, Response, status
 from fastapi.middleware.cors import CORSMiddleware
-from redis.asyncio import Redis, from_url
-from sqlalchemy.ext.asyncio import AsyncEngine, create_async_engine
+from redis.asyncio import from_url
+from sqlalchemy.ext.asyncio import create_async_engine
 
 from app.health import check_dependencies
 from app.settings import get_settings
@@ -42,4 +42,3 @@ async def readiness(request: Request, response: Response) -> dict[str, object]:
     if not ready:
         response.status_code = status.HTTP_503_SERVICE_UNAVAILABLE
     return {"status": "ok" if ready else "unavailable", "dependencies": dependencies}
-
