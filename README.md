@@ -1,6 +1,6 @@
 # QueueFlow
 
-**Project status: Foundation**
+**Project status: Core platform**
 
 QueueFlow is a distributed background-job platform built to make queue processing observable and explainable. The final product will combine PostgreSQL-backed job state, Redis Streams delivery, independently deployable workers and a real-time React dashboard.
 
@@ -11,6 +11,7 @@ QueueFlow is a distributed background-job platform built to make queue processin
 - Docker Compose services for PostgreSQL, Redis, the API and the dashboard shell.
 - React, TypeScript and Tailwind dashboard foundation.
 - Alembic initialized for the persistent domain introduced in the next milestone.
+- Durable job, attempt, worker, event and outbox schema with lifecycle rules and idempotency support.
 - Initial CI for backend lint/tests and frontend production builds.
 
 ## Local development
