@@ -55,14 +55,33 @@ class JobRepository:
             if existing is None:
                 raise
             if existing.payload_hash != request_hash:
-                raise IdempotencyConflict("Idempotency key was already used with a different payload")
+                raise IdempotencyConflict(
+                    "Idempotency key was already used with a different payload"
+                )
             return existing, False
         return job, True
 
     async def _add_new_job_records(self, job: Job) -> None:
         self.session.add(job)
-        self.session.add(JobEvent(job_id=job.id, event_type="job.created", message="Job persisted", metadata_={"status": job.status, "priority": job.priority}))
-        self.session.add(OutboxEvent(aggregate_id=job.id, event_type="job.queued", payload={"job_id": str(job.id), "queue": job.queue_name, "priority": job.priority}))
+        self.session.add(
+            JobEvent(
+                job_id=job.id,
+                event_type="job.created",
+                message="Job persisted",
+                metadata_={"status": job.status, "priority": job.priority},
+            )
+        )
+        self.session.add(
+            OutboxEvent(
+                aggregate_id=job.id,
+                event_type="job.queued",
+                payload={
+                    "job_id": str(job.id),
+                    "queue": job.queue_name,
+                    "priority": job.priority,
+                },
+            )
+        )
 
     async def _get_by_key(self, queue_name: str, key: str) -> Job | None:
         statement = select(Job).where(Job.queue_name == queue_name, Job.idempotency_key == key)
