@@ -2,12 +2,12 @@
 
 ## Current status
 
-- Current day: 2 of 4
-- Current milestone: Core platform and interface
+- Current day: 3 of 4
+- Current milestone: Processing and reliability
 - Status: completed
-- Completed on: 2026-08-24
-- Branch: day-02-core-ui
-- Pull request: https://github.com/VxHugo/queueflow/pull/2
+- Completed on: 2026-08-25
+- Branch: day-03-processing
+- Pull request: https://github.com/VxHugo/queueflow/pull/3
 - CI: passed
 
 ## Delivered
@@ -18,6 +18,7 @@
 - React/TypeScript/Tailwind dashboard shell and operations information architecture.
 - Alembic baseline and initial GitHub Actions workflow.
 - Job lifecycle, PostgreSQL domain schema, idempotency repository and transactional outbox.
+- Redis Streams dispatcher, priority workers, scheduled release, lease recovery and demo retry handlers.
 
 ## Verification
 
@@ -27,10 +28,10 @@
 
 ## Next milestone
 
-Day 3 — processing and reliability.
+Day 4 — integration and demo.
 
 ## Known limitations
 
 - The operations dashboard uses labelled preview values until it is connected to the API in Day 4.
-- Redis Streams dispatcher, workers and recovery behaviours are scheduled for Day 3.
+- REST job API, WebSocket updates and real dashboard data are scheduled for Day 4.
 - Compose could not be executed on this machine because the Docker executable is unavailable.
