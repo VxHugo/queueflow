@@ -52,6 +52,53 @@ services:
       api: {condition: service_healthy}
     ports: ["5173:5173"]
 
+  dispatcher:
+    build: ./backend
+    command: python -m app.dispatcher
+    environment:
+      DATABASE_URL: postgresql+asyncpg://queueflow:queueflow@postgres:5432/queueflow
+      REDIS_URL: redis://redis:6379/0
+    depends_on:
+      api: {condition: service_healthy}
+
+  scheduler:
+    build: ./backend
+    command: python -m app.scheduler
+    environment:
+      DATABASE_URL: postgresql+asyncpg://queueflow:queueflow@postgres:5432/queueflow
+    depends_on:
+      api: {condition: service_healthy}
+
+  worker-01: &worker
+    build: ./backend
+    command: python -m app.worker
+    environment:
+      DATABASE_URL: postgresql+asyncpg://queueflow:queueflow@postgres:5432/queueflow
+      REDIS_URL: redis://redis:6379/0
+      WORKER_ID: worker-01
+    depends_on:
+      api: {condition: service_healthy}
+
+  worker-02:
+    <<: *worker
+    environment:
+      DATABASE_URL: postgresql+asyncpg://queueflow:queueflow@postgres:5432/queueflow
+      REDIS_URL: redis://redis:6379/0
+      WORKER_ID: worker-02
+
+  worker-03:
+    <<: *worker
+    environment:
+      DATABASE_URL: postgresql+asyncpg://queueflow:queueflow@postgres:5432/queueflow
+      REDIS_URL: redis://redis:6379/0
+      WORKER_ID: worker-03
+
+  prometheus:
+    image: prom/prometheus:v2.54.1
+    command: --config.file=/etc/prometheus/prometheus.yml
+    volumes: ["./prometheus.yml:/etc/prometheus/prometheus.yml:ro"]
+    ports: ["9090:9090"]
+
 volumes:
   postgres-data:
   redis-data:
