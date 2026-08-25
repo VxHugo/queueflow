@@ -1,5 +1,6 @@
 import asyncio
 import os
+import random
 from datetime import datetime, timedelta, timezone
 
 from redis.asyncio import from_url
@@ -82,7 +83,16 @@ class WorkerService:
                 job.status = JobStatus.CANCELED
                 attempt.status = "CANCELED"
             except RetryableJobError as error:
-                job.status = JobStatus.RETRYING if job.attempts < job.max_attempts else JobStatus.DEAD_LETTERED
+                job.status = (
+                    JobStatus.RETRYING
+                    if job.attempts < job.max_attempts
+                    else JobStatus.DEAD_LETTERED
+                )
+                if job.status == JobStatus.RETRYING:
+                    limit = min(job.backoff_max, job.backoff_base * 2 ** (job.attempts - 1))
+                    job.available_at = datetime.now(timezone.utc) + timedelta(
+                        seconds=random.uniform(0, limit)
+                    )
                 job.last_error = {"type": type(error).__name__, "message": str(error)}
                 attempt.status = "FAILED"
             finally:
