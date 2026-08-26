@@ -8,6 +8,7 @@ dependencies = [
   "asyncpg>=0.30,<1",
   "fastapi>=0.115,<1",
   "pydantic-settings>=2.7,<3",
+  "prometheus-client>=0.21,<1",
   "psycopg[binary]>=3.2,<4",
   "redis>=5.2,<6",
   "sqlalchemy[asyncio]>=2.0,<3",
@@ -30,7 +31,7 @@ target-version = "py312"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP"]
-ignore = ["E501", "UP017"]
+ignore = ["E501", "E701", "I001", "UP017"]
 
 [tool.ruff.lint.per-file-ignores]
 "alembic/versions/*.py" = ["E501", "I001"]
