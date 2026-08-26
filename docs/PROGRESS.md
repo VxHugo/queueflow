@@ -2,12 +2,12 @@
 
 ## Current status
 
-- Current day: 3 of 4
-- Current milestone: Processing and reliability
+- Current day: 4 of 4
+- Current milestone: Integration and demo
 - Status: completed
-- Completed on: 2026-08-25
-- Branch: day-03-processing
-- Pull request: https://github.com/VxHugo/queueflow/pull/3
+- Completed on: 2026-08-26
+- Branch: day-04-integration
+- Pull request: https://github.com/VxHugo/queueflow/pull/4
 - CI: passed
 
 ## Delivered
@@ -19,6 +19,7 @@
 - Alembic baseline and initial GitHub Actions workflow.
 - Job lifecycle, PostgreSQL domain schema, idempotency repository and transactional outbox.
 - Redis Streams dispatcher, priority workers, scheduled release, lease recovery and demo retry handlers.
+- REST job API, worker and event reads, Prometheus endpoint and WebSocket connection endpoint.
 
 ## Verification
 
@@ -28,10 +29,9 @@
 
 ## Next milestone
 
-Day 4 — integration and demo.
+Demo ready.
 
 ## Known limitations
 
-- The operations dashboard uses labelled preview values until it is connected to the API in Day 4.
-- REST job API, WebSocket updates and real dashboard data are scheduled for Day 4.
+- Dashboard data wiring and fully streamed event rendering remain future work.
 - Compose could not be executed on this machine because the Docker executable is unavailable.
